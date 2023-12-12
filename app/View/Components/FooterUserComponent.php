@@ -6,15 +6,14 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class UserLayout extends Component
+class FooterUserComponent extends Component
 {
-    public $title = '';
     /**
      * Create a new component instance.
      */
-    public function __construct($title)
+    public function __construct()
     {
-        $this->title = config('app.name') . ' | ' . $title;
+        //
     }
 
     /**
@@ -22,6 +21,6 @@ class UserLayout extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('layouts.user');
+        return view('components.footer-user-component');
     }
 }
