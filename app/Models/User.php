@@ -68,4 +68,14 @@ class User extends Authenticatable
         return $this->role === $role;
     }
 
+    /**
+     * Get all of the transactions for the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class);
+    }
+
 }

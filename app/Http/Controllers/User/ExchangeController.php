@@ -32,8 +32,17 @@ class ExchangeController extends Controller
         return view('user.exchange', ['exchanges' => $exchanges]);
     }
 
+    public function history()
+    {
+        $transactions = Transaction::where('user_id', Auth::user()->id)->orderBy('created_at', 'DESC')->get();
+
+        return view('user.transaction-history', ['transactions' => $transactions]);
+    }
+
     public function store(Request $request)
     {
+
+
 
         $this->validateMainFields($request);
 

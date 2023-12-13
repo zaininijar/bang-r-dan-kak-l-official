@@ -47,4 +47,5 @@ Route::group(['namespace' => 'User', 'prefix' => 'user', 'as' => 'user.', 'middl
     Route::get('/profile-user', [ProfileController::class, 'index'])->name('profile');
     Route::get('/penukaran-point', [ExchangeController::class, 'index'])->name('penukaran-point.index');
     Route::post('/penukaran-point', [ExchangeController::class, 'store'])->name('penukaran-point.store');
+    Route::get('/penukaran-point/riwayat', [ExchangeController::class, 'history'])->name('penukaran-point.history');
 });

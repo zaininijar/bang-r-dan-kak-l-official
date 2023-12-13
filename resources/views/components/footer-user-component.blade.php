@@ -1,6 +1,6 @@
 <footer class=" bg-white">
-    <div class="flex justify-between gap-4 items-center __container py-24 ">
-        <div class="flex flex-col items-start gap-4">
+    <div class="flex flex-wrap justify-between gap-4 items-center __container py-16 md:py-24 ">
+        <div class="flex flex-col md:items-start items-center gap-4">
             <div class="flex items-center bg-indigo-600 pl-2 pr-16 py-1">
                 <a href="#" class="text-lg w-16 h-10 overflow-hidden relative">
                     <img class="w-full h-full invert object-cover object-center" src="{{ asset('images/logo.png') }}"
@@ -10,13 +10,13 @@
                     Official
                 </div>
             </div>
-            <p class="w-2/3 text-gray-700">
+            <p class="md:w-2/3 w-full text-gray-700 text-sm md:text-base md:text-start text-center">
                 Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nobis voluptatum animi nam molestias magnam,
                 deleniti, soluta laborum veniam debitis id odio saepe possimus ipsum! Ullam laborum delectus architecto
                 modi tempore.
             </p>
         </div>
-        <div class="flex gap-4">
+        <div class="flex gap-4 mx-auto md:mx-0">
             <div class="bg-indigo-50 text-indigo-500 p-4 rounded-full">
                 <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                     <path
@@ -48,10 +48,10 @@
         </div>
     </div>
     <div class="bg-indigo-600 text-white font-normal text-sm py-5 w-full">
-        <div class="__container flex justify-between">
+        <div
+            class="__container flex flex-wrap gap-2 justify-center md:justify-between text-xs md:text-base text-center md:text-start">
             <div>
                 © 2023 BangRdanKakLOfficial. All Rights reserved
-
             </div>
             <div class="flex gap-8">
                 <span>Privacy Policy</span>

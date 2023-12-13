@@ -15,4 +15,24 @@ class Transaction extends Model
         'account_identity'
     ];
 
+    /**
+     * Get the user that owns the Transaction
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    /**
+     * Get the exchange that owns the Transaction
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function exchange()
+    {
+        return $this->belongsTo(Exchange::class);
+    }
+
 }

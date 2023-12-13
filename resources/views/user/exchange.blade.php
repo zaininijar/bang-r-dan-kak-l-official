@@ -11,7 +11,7 @@
                 </ul>
             </div>
             @endif
-
+            <span x-text="account_identity.second"></span>
             @if (session('success'))
             <div x-show="isSuccess"
                 class="flex min-h-screen w-full fixed z-10 inset-0 items-center justify-center bg-slate-700/10 backdrop-blur-md">
@@ -34,10 +34,10 @@
                     </div>
                     <h3 class="my-4 text-center text-3xl font-semibold text-gray-700">Selamat Ya!!!</h3>
                     <p class="w-[230px] text-center font-normal text-gray-600">{{ session('success') }}</p>
-                    <button
+                    <a href="{{ route('user.penukaran-point.history') }}"
                         class="mx-auto mt-10 block rounded-xl border-4 border-transparent bg-indigo-600 px-6 py-2 text-center text-base font-medium text-indigo-50 outline-8 hover:outline hover:duration-300">
                         Cek Penukaran
-                    </button>
+                    </a>
                 </div>
             </div>
             @endif
@@ -56,7 +56,7 @@
                     class="text-indigo-500 bg-indigo-50 p-1 rounded-md text-sm">{{ Auth::user()->point }}</span>
             </div>
             <form action="{{ route('user.penukaran-point.store') }}" method="post"
-                class="border rounded-lg p-8 mt-8 grid grid-cols-1 gap-8 bg-white">
+                class="border rounded-lg md:p-8 py-8 px-4 mt-8 grid grid-cols-1 gap-8 bg-white">
                 @csrf
                 <div>
                     <h3 class="font-bold">Pilih Penukaran</h3>
@@ -96,16 +96,15 @@
                     <h3 x-show="exchange_type == 'E-WALLET'">Masukkan No <span class="font-bold">E-Wallet</span></h3>
                     <div :class="exchange_type !== '' ? 'mt-2 flex gap-3' : 'hidden'">
                         <input name="account_identity_main" x-model="account_identity.main" type="text"
-                            class="bg-white w-1/3 font-bold text-indigo-500 px-2 py-2 rounded-md focus:bg-indigo-50 border-indigo-400" />
-                        <select x-model="account_identity.second" name="account_identity_second"
-                            x-show="exchange_type == 'E-WALLET'"
+                            class="bg-white md:w-1/3 w-full font-bold text-indigo-500 px-2 py-2 rounded-md focus:bg-indigo-50 border-indigo-400" />
+                        <select x-model="account_identity.second" x-show="exchange_type == 'E-WALLET'"
                             class="bg-white font-bold text-indigo-500 px-2 py-2 rounded-md focus:bg-indigo-50 border-indigo-400 w-[100px]">
                             <option value="DANA">DANA</option>
                             <option value="OVO">OVO</option>
                             <option value="GOPAY">GOPAY</option>
                         </select>
-                        <input x-model="account_identity.second" name="account_identity_second"
-                            x-show="exchange_type == 'ML'" type="number"
+                        <input x-model="account_identity.second" type="hidden" name="account_identity_second">
+                        <input x-model="account_identity.second" x-show="exchange_type == 'ML'" type="number"
                             class="bg-white font-bold text-indigo-500 px-2 py-2 rounded-md focus:bg-indigo-50 border-indigo-400 w-[100px]" />
                     </div>
                 </div>
@@ -116,7 +115,8 @@
                             <h3 class="font-bold">Tukar Ke Robux</h3>
                             <img class="w-6" src="{{ asset('images/robux.png') }}" alt="">
                         </div>
-                        <ul class="flex gap-3 mt-2" :class="exchange_type !== 'RBX' ? 'cursor-not-allowed' : ''">
+                        <ul class="flex flex-wrap gap-3 mt-2"
+                            :class="exchange_type !== 'RBX' ? 'cursor-not-allowed' : ''">
                             @foreach ($exchanges['RBX'] as $rbx)
                             <li :class="exchange_type !== 'RBX' ? 'cursor-not-allowed' : ''"
                                 @click="exchange_type == 'RBX' ? exchange_id = {{ $rbx->id }} : ''">
@@ -138,7 +138,7 @@
                             <h3 class="font-bold">Tukar Ke E-Wallet</h3>
                             <img class="w-6" src="{{ asset('images/indonesian-rupiah.png') }}" alt="">
                         </div>
-                        <ul class="flex gap-3 mt-2">
+                        <ul class="flex flex-wrap gap-3 mt-2">
                             @foreach ($exchanges['E-WALLET'] as $ewallet)
                             <li :class="exchange_type !== 'E-WALLET' ? 'cursor-not-allowed' : ''"
                                 @click="exchange_type == 'E-WALLET' ? exchange_id = {{ $ewallet->id }} : ''">
@@ -158,9 +158,9 @@
                         :class="exchange_type !== 'ML' ? 'cursor-not-allowed' : 'p-4 order-first bg-indigo-100/20 border border-indigo-500 rounded-lg'">
                         <div class="flex gap-3">
                             <h3 class="font-bold">Tukar Ke Diamond Mobile Legends</h3>
-                            <img class="w-6" src="{{ asset('images/diamond.png') }}" alt="">
+                            <img class="w-6 h-6" src="{{ asset('images/diamond.png') }}" alt="">
                         </div>
-                        <ul class="flex gap-3 mt-2">
+                        <ul class="flex flex-wrap gap-3 mt-2">
                             @foreach ($exchanges['ML'] as $ml)
                             <li :class="exchange_type !== 'ML' ? 'cursor-not-allowed' : ''"
                                 @click="exchange_type == 'ML' ? exchange_id = {{ $ml->id }} : ''">
@@ -182,7 +182,7 @@
                             <h3 class="font-bold">Tukar Ke Diamond Free Fire</h3>
                             <img class="w-6" src="{{ asset('images/Freefire_diamonds.png') }}" alt="">
                         </div>
-                        <ul class="flex gap-3 mt-2">
+                        <ul class="flex flex-wrap gap-3 mt-2">
                             @foreach ($exchanges['FF'] as $ff)
                             <li :class="exchange_type !== 'FF' ? 'cursor-not-allowed' : ''"
                                 @click="exchange_type == 'FF' ? exchange_id = {{ $ff->id }} : ''">
@@ -200,8 +200,8 @@
                     </div>
                 </div>
                 <div>
-                    <label class="relative flex gap-3 cursor-pointer items-center rounded-full py-3" for="checkbox"
-                        data-ripple-dark="true">
+                    <label class="relative flex gap-3 cursor-pointer items-center rounded-full md:py-3 py-0"
+                        for="checkbox" data-ripple-dark="true">
                         <input type="checkbox" required
                             class="before:content[''] peer relative h-5 w-5 bg-indigo-50 cursor-pointer appearance-none rounded-md border border-blue-gray-200 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-indigo-500 checked:bg-indigo-600 checked:before:bg-indigo-600 hover:before:opacity-10"
                             id="checkbox" />
@@ -214,13 +214,13 @@
                                     clip-rule="evenodd"></path>
                             </svg>
                         </div>
-                        <div>
+                        <div class="md:text-base text-sm">
                             Yakin anda menukar point ya kesana?
                         </div>
                     </label>
                 </div>
                 <div>
-                    <button type="submit" class="bg-indigo-600 text-white px-6 py-3 rounded-lg">
+                    <button type="submit" class="bg-indigo-600 text-white px-6 py-3 md:w-auto w-full rounded-lg">
                         Lanjutkan
                     </button>
                 </div>

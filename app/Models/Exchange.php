@@ -13,4 +13,14 @@ class Exchange extends Model
         'point',
         'exchanged_to'
     ];
+
+    /**
+     * Get all of the transactions for the Exchange
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class);
+    }
 }

@@ -1,4 +1,4 @@
-<x-user-layout title="Penukaran Point">
+<x-user-layout title="Profile User">
     <section class="bg-indigo-50/40">
         <div class="__container py-24 flex flex-col items-start justify-start gap-8" x-data="{exchange_type: ''}">
             <div class="text-2xl font-bold">
@@ -21,15 +21,15 @@
             </table>
 
             <div class="bg-indigo-50 p-8 w-4/12 text-xl font-bold border border-indigo-500 rounded-lg">
-                Point Anda : <span class="text-indigo-600 bg-indigo-50 p-1 rounded-md">55</span>
+                Poin Anda : <span class="text-indigo-600 bg-indigo-50 p-1 rounded-md">{{ Auth::user()->point }}</span>
             </div>
 
             <div class="bg-red-100 text-bg-red-500 text-red-500 border p-4">
-                Untuk setiap penukaran point Anda, pastikan Anda memiliki
-                setidaknya 25 point atau lebih di akun Anda.
+                Untuk setiap penukaran poin Anda, pastikan Anda memiliki
+                setidaknya 25 poin atau lebih di akun Anda.
             </div>
             <a href="{{ route('user.penukaran-point.index') }}" class="px-4 py-3 bg-indigo-600 text-white rounded-lg">
-                Tukar Point Sekarang
+                Tukar Poin Sekarang
             </a>
         </div>
     </section>
