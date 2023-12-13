@@ -19,32 +19,23 @@
                     </div>
                 </div>
                 @endif
-                <div class="flex items-center justify-between bg-white rounded-md px-8 py-4">
+                <div
+                    class="flex items-center justify-between rounded-lg px-8 py-4 bg-indigo-50 border border-indigo-500 shadow-lg">
                     <p tabindex="0"
-                        class="focus:outline-none text-base sm:text-lg md:text-xl lg:text-2xl font-bold leading-normal text-gray-800">
-                        User List
+                        class="focus:outline-none text-base sm:text-lg md:text-xl lg:text-2xl font-bold leading-normal text-indigo-600">
+                        Semua User
                     </p>
                     <div class="flex gap-8">
                         <div
-                            class="py-2 flex items-center text-sm font-medium leading-none text-gray-600 bg-white cursor-pointer rounded">
+                            class="py-2 flex items-center text-base font-medium leading-none text-indigo-600 cursor-pointer rounded">
                             <p>Search</p>
                             <input type="search" aria-label="select"
-                                class="focus:text-indigo-600 text-sm focus:outline-none bg-transparent ml-2 px-4 py-1 w-64 rounded-full border-gray-300" />
-                        </div>
-                        <div
-                            class="py-2 flex items-center text-sm font-medium leading-none text-gray-600 bg-white cursor-pointer rounded">
-                            <p>Sort By </p>
-                            <select aria-label="select"
-                                class="focus:text-indigo-600 text-sm focus:outline-none bg-transparent ml-2 px-4 py-1 w-64 rounded-full border-gray-300">
-                                <option class="text-sm text-indigo-800">Latest</option>
-                                <option class="text-sm text-indigo-800">Oldest</option>
-                                <option class="text-sm text-indigo-800">Latest</option>
-                            </select>
+                                class="focus:text-indigo-600 text-base focus:outline-none bg-transparent ml-2 px-4 py-2 w-64 rounded-md bg-white border-gray-300" />
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="bg-white py-4 md:py-7 px-4 md:px-8 xl:px-10 rounded-md">
+            <div class="bg-white py-4 md:py-7 px-4 md:px-8 xl:px-10 rounded-lg border border-indigo-500 shadow-lg">
                 <div class="sm:flex items-center justify-between">
                     <div class="flex items-center">
                     </div>
@@ -63,7 +54,7 @@
                                     <td class="pl-5">Name</td>
                                     <td class="pl-5">Username</td>
                                     <td class="pl-5">No Absensi</td>
-                                    <td class="pl-5">Point</td>
+                                    <td class="pl-5">Poin</td>
                                     <td class="pl-5"></td>
                                 </tr>
                             </th>
@@ -303,13 +294,4 @@
             </div>
         </div>
     </div>
-
-
-
-
-
-
-
-
-
 </x-app-layout>
