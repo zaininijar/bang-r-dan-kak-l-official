@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [HomeController::class, 'index'])->name('user.home');
+Route::get('/', [HomeController::class, 'index'])->middleware('track.visitor')->name('user.home');
 
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth:sanctum', config('jetstream.auth_session'), 'verified', 'rolecheck:admin']], function () {
     Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
@@ -27,6 +27,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin.', 'mi
         Route::post('/', [UserController::class, 'store'])->name('store');
         Route::put('/', [UserController::class, 'update'])->name('update');
         Route::delete('/{id}', [UserController::class, 'destroy'])->name('destroy');
+        Route::get('/search/{query}', [UserController::class, 'search'])->name('search');
     });
 
     Route::group(['prefix' => 'exchange', 'as' => 'exchange.'], function () {

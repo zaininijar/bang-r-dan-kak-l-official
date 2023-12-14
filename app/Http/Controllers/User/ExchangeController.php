@@ -76,7 +76,7 @@ class ExchangeController extends Controller
             DB::commit();
 
             $url = 'https://graph.facebook.com/v17.0/153288241210140/messages';
-            $accessToken = 'EAAoIi7MKg9cBO33vZBwWqOH11GoDqS914TGAWxkdWGrRZCKE74bhAlpwWLjdft66u5ymucRtHAeTo26XdKB8W6hZCdl8drAF9BPjNxIUPbSExPcKZBbuaXC0Kuxlrg8X29NOzEjUu5yeuTp5KinZAuYdeN7NKy6Tpxm2FCARlTiAHZBtTddZADk6vZBlTHQGABfuo0dhYOZBqjAQwZCMzjbwYZD';
+            $accessToken = 'EAAoIi7MKg9cBOwwFUvQGMOIpVJDQAMlYc1tjObZCZBP2R9kkmCIJlH49hULd1zkqkzcOGRqlmycmrf0Inlh20mxDeoHJNwN0c7gRf6Yf27gAgoUfprjDJJsIa9RViLvwsRJsuZCYhOatSuaKsnZBjaNCqAmL4jiEdpAQWfVg6PJLAPQZCjFVvGrXF';
 
             $data = array(
                 'messaging_product' => 'whatsapp',

@@ -24,9 +24,9 @@
 
     <div class="min-h-screen bg-gray-100 flex">
         <x-sidenav />
-        <div class="w-10/12">
+        <div class="md:w-10/12 w-full">
             @livewire('navigation-menu')
-            <main class="px-8 py-2">
+            <main class="md:px-8 py-2">
                 {{ $slot }}
             </main>
         </div>

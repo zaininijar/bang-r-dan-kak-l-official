@@ -89,4 +89,12 @@ class UserController extends Controller
         }
 
     }
+
+    public function search($query)
+    {
+        $filteredUser = User::where('username', 'LIKE', '%' . $query . '%')->where('role', '!=', 'admin')
+            ->get();
+
+        return response()->json($filteredUser, 200);
+    }
 }

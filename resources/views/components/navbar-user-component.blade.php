@@ -3,11 +3,14 @@
         <div x-data="{ open: false }" class="flex flex-col __container lg:items-center lg:justify-between lg:flex-row">
             <div class="flex flex-row items-center justify-between">
                 <div class="flex items-center">
+                    <div class="font-bold text-xl md:block hidden -ml-4">
+                        Bang
+                    </div>
                     <a href="#" class="text-lg w-16 h-10 overflow-hidden relative">
                         <img class="w-full h-full object-cover object-center" src="{{ asset('images/logo.png') }}"
                             alt="">
                     </a>
-                    <div class="font-bold text-xl -ml-4">
+                    <div class="font-bold text-xl md:block hidden -ml-4">
                         Official
                     </div>
                 </div>

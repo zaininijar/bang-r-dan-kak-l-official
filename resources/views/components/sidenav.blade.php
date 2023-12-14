@@ -1,4 +1,4 @@
-<div class="w-2/12 relative">
+<div class="w-2/12 relative md:block hidden">
     <!-- component -->
     <aside class="fixed flex flex-col top-0 left-0 w-2/12 bg-white h-full border-r">
         <div class="flex items-center justify-start pl-4 h-16 border-b">
@@ -46,7 +46,7 @@
                         <span class="ml-2 text-sm tracking-wide truncate">Users </span>
                         <span
                             class="px-2 py-0.5 ml-auto text-xs font-medium tracking-wide text-green-500 bg-green-50 rounded-full">
-                            {{ App\Models\User::get()->count() }}
+                            {{ App\Models\User::where('role', 'user')->get()->count() }}
                         </span>
                     </a>
                 </li>
