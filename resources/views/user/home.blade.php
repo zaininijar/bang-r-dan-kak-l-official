@@ -33,7 +33,7 @@
     <section class="__container mt-8 mb-16">
         <h2 class="text-center text-2xl underline font-semibold text-indigo-700">Tutorial Mendapatkan Poin</h2>
         <div class="flex flex-wrap md:flex-nowrap md:gap-x-5 gap-x-0 md:gap-y-5 gap-y-5 mt-10 text-center">
-            <div class="border md:p-16  p-5flex flex-col justify-center md:w-6/12 w-full rounded-lg bg-white">
+            <div class="border md:p-16  p-5 flex flex-col justify-center md:w-6/12 w-full rounded-lg bg-white">
                 <h2 class="text-2xl pt-5 font-semibold">Jangan lupa ya, Ikuti selalu tutorial dari kami.</h2>
                 <p class="pt-2 pb-5">
                     Selalu teruskan perjalanan pembelajaran Anda dengan mengikuti tutorial kami.
@@ -41,7 +41,7 @@
                     menjelajahi dunia pembelajaran yang tak terbatas. Mari belajar bersama!
                 </p>
             </div>
-            <div class="border md:p-16  p-5flex flex-col justify-center md:w-6/12 w-full rounded-lg bg-white">
+            <div class="border md:p-16  p-5 flex flex-col justify-center md:w-6/12 w-full rounded-lg bg-white">
                 <h2 class="text-2xl pt-5 font-semibold">Masuk kedalam grup khusus untuk dapatkan poin extra.</h2>
                 <p class="pt-2 pb-5">
                     Bergabunglah dalam grup eksklusif kami dan raih poin ekstra! Temukan keuntungan istimewa, akses

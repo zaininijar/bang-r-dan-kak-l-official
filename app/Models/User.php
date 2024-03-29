@@ -78,4 +78,14 @@ class User extends Authenticatable
         return $this->hasMany(Transaction::class);
     }
 
+    /**
+     * Get all of the attendances for the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function attendances()
+    {
+        return $this->hasMany(Attendance::class);
+    }
+
 }
