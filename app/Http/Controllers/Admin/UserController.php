@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Symfony\Component\Console\Input\Input;
 
 class UserController extends Controller
 {
@@ -74,6 +75,21 @@ class UserController extends Controller
         } catch (\Throwable $th) {
             dd($th->getMessage());
         }
+    }
+
+    public function addPoint(Request $request)
+    {
+
+        $userIds = explode(',', $request->input('userIdSelected'));
+        $users = User::whereIn('id', $userIds)->get();
+
+        foreach ($users as $user) {
+            $user->point += $request->input('point');
+            $user->save();
+        }
+
+        return redirect()->back()->with('success', 'success add new point to user selected');
+
     }
 
     public function destroy(string $id)

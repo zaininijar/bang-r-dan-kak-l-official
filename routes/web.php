@@ -29,6 +29,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin.', 'mi
         Route::put('/', [UserController::class, 'update'])->name('update');
         Route::delete('/{id}', [UserController::class, 'destroy'])->name('destroy');
         Route::get('/search/{query}', [UserController::class, 'search'])->name('search');
+        Route::post('/add-point', [UserController::class, 'addPoint'])->name('addPoint');
     });
 
     Route::group(['prefix' => 'exchange', 'as' => 'exchange.'], function () {
