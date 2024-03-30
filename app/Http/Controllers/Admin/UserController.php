@@ -80,15 +80,20 @@ class UserController extends Controller
     public function addPoint(Request $request)
     {
 
-        $userIds = explode(',', $request->input('userIdSelected'));
-        $users = User::whereIn('id', $userIds)->get();
+        if (!empty($request->input('userIdSelected'))) {
+            $userIds = explode(',', $request->input('userIdSelected'));
+            $users = User::whereIn('id', $userIds)->get();
 
-        foreach ($users as $user) {
-            $user->point += $request->input('point');
-            $user->save();
+            foreach ($users as $user) {
+                $user->point += $request->input('point');
+                $user->save();
+            }
+
+            return redirect()->back()->with('success', 'success add new point to user selected');
+
         }
 
-        return redirect()->back()->with('success', 'success add new point to user selected');
+        return redirect()->back()->with('error', 'you don`t have selected user to add point');
 
     }
 

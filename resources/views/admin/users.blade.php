@@ -16,12 +16,27 @@
             <div class="py-4 md:py-7">
                 @if ($message = Session::get('success'))
                     <div x-show="isOpenAlert"
-                        class="bg-green-50 text-green-500 px-6 py-4 mb-4 shadow-sm rounded-md flex justify-between items-center">
+                        class="bg-green-100 text-green-500 px-6 py-4 mb-4 shadow-sm rounded-md flex justify-between items-center">
                         <span>{{ $message }}</span>
                         <div @click="isOpenAlert = false" class="cursor-pointer">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="20"
                                 height="20" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"
                                 fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" />
+                                <line x1="18" y1="6" x2="6" y2="18" />
+                                <line x1="6" y1="6" x2="18" y2="18" />
+                            </svg>
+                        </div>
+                    </div>
+                @endif
+                @if ($message = Session::get('error'))
+                    <div x-show="isOpenAlert"
+                        class="bg-red-100 text-red-500 px-6 py-4 mb-4 shadow-sm rounded-md flex justify-between items-center">
+                        <span>{{ $message }}</span>
+                        <div @click="isOpenAlert = false" class="cursor-pointer">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x"
+                                width="20" height="20" viewBox="0 0 24 24" stroke-width="2.5"
+                                stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" />
                                 <line x1="18" y1="6" x2="6" y2="18" />
                                 <line x1="6" y1="6" x2="18" y2="18" />
@@ -135,8 +150,9 @@
                                         <div x-data="{ isOpenAct: false }" class="relative px-5 pt-2 text-end">
                                             <button class="focus:ring-2 rounded-md focus:outline-none"
                                                 @click="isOpenAct = !isOpenAct" role="button" aria-label="option">
-                                                <svg class="dropbtn" xmlns="http://www.w3.org/2000/svg" width="20"
-                                                    height="20" viewBox="0 0 20 20" fill="none">
+                                                <svg class="dropbtn" xmlns="http://www.w3.org/2000/svg"
+                                                    width="20" height="20" viewBox="0 0 20 20"
+                                                    fill="none">
                                                     <path
                                                         d="M4.16667 10.8332C4.62691 10.8332 5 10.4601 5 9.99984C5 9.5396 4.62691 9.1665 4.16667 9.1665C3.70643 9.1665 3.33334 9.5396 3.33334 9.99984C3.33334 10.4601 3.70643 10.8332 4.16667 10.8332Z"
                                                         stroke="#9CA3AF" stroke-width="1.25" stroke-linecap="round"
