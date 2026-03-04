@@ -10,6 +10,9 @@ return new class () extends Migration {
      */
     public function up(): void
     {
+        if (Schema::hasColumn('users', 'username')) {
+            return;
+        }
         Schema::table('users', function (Blueprint $table) {
             $table->string('username')->unique()->after('email');
             $table->string('no_absensi')->default('Adm_1')->after('username');

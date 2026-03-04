@@ -11,6 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
+        if (Schema::hasColumn('transactions', 'status')) {
+            return;
+        }
         Schema::table('transactions', function (Blueprint $table) {
             $table->enum('status', ['pending', 'processing', 'completed'])->default('pending')->after('account_identity');
         });

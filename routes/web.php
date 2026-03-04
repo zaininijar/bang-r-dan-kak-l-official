@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
+use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\ExchangeController as AdminExchangeController;
 use App\Http\Controllers\Admin\EventController as AdminEventController;
@@ -24,6 +25,22 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'index'])->middleware('track.visitor')->name('user.home');
+
+// Deploy: run migration via browser (shared hosting). Hapus route ini setelah selesai!
+// Contoh: yourdomain.com/deploy-migrate?key=rahasia_dari_env
+Route::get('/deploy-migrate', function () {
+    if (request('key') !== env('DEPLOY_MIGRATE_KEY', 'ganti_di_env')) {
+        abort(404);
+    }
+    Artisan::call('migrate', ['--force' => true]);
+    return '<pre>' . Artisan::output() . '</pre>';
+});
+
+// To create symlink for storage
+Route::get('/create-symlink', function () {
+    Artisan::call('storage:link');
+    return '<pre>' . Artisan::output() . '</pre>';
+});
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth:sanctum', config('jetstream.auth_session'), 'verified', 'rolecheck:admin']], function () {
     Route::group(['prefix' => 'user', 'as' => 'user.'], function () {

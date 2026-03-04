@@ -10,6 +10,9 @@ return new class () extends Migration {
      */
     public function up(): void
     {
+        if (Schema::hasTable('visitors')) {
+            return;
+        }
         Schema::create('visitors', function (Blueprint $table) {
             $table->id();
             $table->string('ip_address');

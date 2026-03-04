@@ -10,6 +10,9 @@ return new class () extends Migration {
      */
     public function up(): void
     {
+        if (Schema::hasTable('exchanges')) {
+            return;
+        }
         Schema::create('exchanges', function (Blueprint $table) {
             $table->id();
             $table->enum('exchange_type', ['ML', 'FF', 'RBX', 'E-WALLET']);
