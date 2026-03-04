@@ -33,6 +33,8 @@
                     href="{{ route('user.penukaran-point.index') }}">Penukaran</a>
                 <a class="px-4 py-3 rounded-lg  lg:mt-0 lg:ml-4 hover:text-gray-900 focus:text-gray-900 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
                     href="{{ route('user.penukaran-point.history') }}">Riwayat Penukaran</a>
+                <a class="px-4 py-3 rounded-lg  lg:mt-0 lg:ml-4 hover:text-gray-900 focus:text-gray-900 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                    href="{{ route('user.events.index') }}">Event</a>
                 <div class="flex gap-2 justify-end">
                     <a class="bg-indigo-600 flex items-center md:justify-center w-1/2 md:w-auto  gap-2 sm:text-base text-sm text-white px-4 py-3 font-medium mt-2 rounded-full lg:mt-0 lg:ml-4 focus:text-gray-900 hover:bg-blue-600 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
                         href="#">

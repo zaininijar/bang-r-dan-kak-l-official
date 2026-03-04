@@ -46,6 +46,7 @@
                                     <td class="pl-5">Ditukar Ke</td>
                                     <td class="pl-5">Identity</td>
                                     <td class="pl-5">Poin</td>
+                                    <td class="pl-5">Status</td>
                                     <td class="pl-5"></td>
                                 </tr>
                             </th>
@@ -121,6 +122,18 @@
                                             {{ $trans->exchange->point }} Poin
                                         </p>
                                     </div>
+                                </td>
+                                <td class="pl-5">
+                                    <form action="{{ route('admin.exchange.transaction.status', $trans) }}" method="post" class="inline">
+                                        @csrf
+                                        @method('put')
+                                        <select name="status" onchange="this.form.submit()"
+                                            class="text-sm rounded-md border-indigo-300 focus:border-indigo-500 focus:ring-indigo-500">
+                                            <option value="pending" {{ $trans->status == 'pending' ? 'selected' : '' }}>Menunggu</option>
+                                            <option value="processing" {{ $trans->status == 'processing' ? 'selected' : '' }}>Diproses</option>
+                                            <option value="completed" {{ $trans->status == 'completed' ? 'selected' : '' }}>Selesai</option>
+                                        </select>
+                                    </form>
                                 </td>
                                 <td>
                                     <div x-data="{ isOpenAct: false }" class="relative px-5 pt-2 text-end">
@@ -275,6 +288,18 @@
                                                     </p>
                                                 </div>
                                             </td>
+                                            <td class="pl-5">
+                                                <form action="/admin/exchange/transaction/${transaction.id}/status" method="post" class="inline">
+                                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                                    <input type="hidden" name="_method" value="put">
+                                                    <select name="status" onchange="this.form.submit()"
+                                                        class="text-sm rounded-md border-indigo-300 focus:border-indigo-500 focus:ring-indigo-500">
+                                                        <option value="pending" ${transaction.status == 'pending' ? 'selected' : ''}>Menunggu</option>
+                                                        <option value="processing" ${transaction.status == 'processing' ? 'selected' : ''}>Diproses</option>
+                                                        <option value="completed" ${transaction.status == 'completed' ? 'selected' : ''}>Selesai</option>
+                                                    </select>
+                                                </form>
+                                            </td>
                                             <td>
                                                 <div x-data="{isOpenAct: false}" class="relative px-5 pt-2 text-end">
                                                     <button class="focus:ring-2 rounded-md focus:outline-none"
@@ -302,7 +327,7 @@
                                                         x-transition:leave-start="opacity-100 scale-100"
                                                         x-transition:leave-end="opacity-0 scale-90" @click.away="isOpenAct = false"
                                                         class="bg-white shadow mr-6 absolute flex top-2 right-6">
-                                                        <form action="{{ route('admin.user.destroy', $trans->id) }}" method="post">
+                                                        <form action="{{ url('admin/exchange') }}/${transaction.id}" method="post">
                                                             @csrf
                                                             @method('delete')
                                                             <button type="submit"

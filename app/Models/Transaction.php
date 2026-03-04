@@ -12,8 +12,13 @@ class Transaction extends Model
     protected $fillable = [
         'user_id',
         'exchange_id',
-        'account_identity'
+        'account_identity',
+        'status',
     ];
+
+    public const STATUS_PENDING = 'pending';
+    public const STATUS_PROCESSING = 'processing';
+    public const STATUS_COMPLETED = 'completed';
 
     /**
      * Get the user that owns the Transaction

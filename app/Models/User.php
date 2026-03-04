@@ -88,4 +88,14 @@ class User extends Authenticatable
         return $this->hasMany(Attendance::class);
     }
 
+    /**
+     * Get all of the event submissions for the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function eventSubmissions()
+    {
+        return $this->hasMany(EventSubmission::class);
+    }
+
 }

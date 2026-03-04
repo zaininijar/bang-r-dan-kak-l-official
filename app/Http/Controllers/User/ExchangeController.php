@@ -71,6 +71,7 @@ class ExchangeController extends Controller
                 'user_id' => Auth::user()->id,
                 'exchange_id' => $requestData['exchange_id'],
                 'account_identity' => $account_identity,
+                'status' => Transaction::STATUS_PENDING,
             ]);
 
             DB::commit();

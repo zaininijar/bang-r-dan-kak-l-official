@@ -34,6 +34,17 @@ class ExchangeController extends Controller
         return response()->json($filteredTransactions, 200);
     }
 
+    public function updateStatus(Request $request, Transaction $transaction)
+    {
+        $request->validate([
+            'status' => ['required', 'in:pending,processing,completed'],
+        ]);
+
+        $transaction->update(['status' => $request->status]);
+
+        return redirect()->back()->with('success', 'Status penukaran berhasil diupdate.');
+    }
+
     public function destroy(string $id)
     {
 
